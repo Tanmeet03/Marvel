@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+    dataBinding {
+        enabled = true
+    }
+    defaultConfig {
+        applicationId "com.example.lifcaremarvel"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+
+def MARVEL_PRIVATE_KEY = System.getenv("MARVEL_PRIVATE_KEY")
+def MARVEL_PUBLIC_KEY = System.getenv("MARVEL_PUBLIC_KEY")
+
+android.buildTypes.each { type ->
+    type.buildConfigField "String", "MARVEL_PRIVATE_KEY", "\"$MARVEL_PRIVATE_KEY\""
+    type.buildConfigField "String", "MARVEL_PUBLIC_KEY", "\"$MARVEL_PUBLIC_KEY\""
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.fragment:fragment:1.1.0-alpha06"
+    implementation "com.google.android.material:material:1.1.0-alpha05"
+    implementation "androidx.recyclerview:recyclerview:1.1.0-alpha04"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    testImplementation "junit:junit:$junitVersion"
+}

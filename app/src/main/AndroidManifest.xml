@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lifcaremarvel">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:usesCleartextTraffic="true">
+
+        <!--Home-->
+        <activity android:name=".ui.home.view.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--Character-->
+        <activity
+            android:name=".ui.character.view.CharacterActivity"
+            android:parentActivityName=".ui.home.view.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar.TranslucentStatusBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.home.view.MainActivity" />
+        </activity>
+
+        <!--Section-->
+        <activity
+            android:name=".ui.section.view.SectionActivity"
+            android:parentActivityName=".ui.home.view.MainActivity"
+            android:theme="@style/AppTheme.Translucent">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.home.view.MainActivity" />
+        </activity>
+    </application>
+</manifest>

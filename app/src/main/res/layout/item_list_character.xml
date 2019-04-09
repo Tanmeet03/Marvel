@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="character"
+            type="com.example.lifcaremarvel.api.data.CharacterPOJO" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_list_character_height"
+        android:foreground="?attr/selectableItemBackground">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:transitionName="@string/transition_character_image"
+            app:imageUrl="@{character.image}"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/text_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{character.name}"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Character.Name"
+            tools:text="@string/app_name" />
+
+    </FrameLayout>
+
+</layout>
